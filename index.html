@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Theft Auto V — Фанатский Сайт</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container">
+            <h1 class="logo">GTA <span>V</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="#characters">Персонажи</a></li>
+                    <li><a href="#features">Особенности</a></li>
+                    <li><a href="#map-section">Карта</a></li>
+                    <li><a href="#cheats">Чит-коды</a></li>
+                    <li><a href="#requirements">Системные требования</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный баннер -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Добро пожаловать в Лос-Сантос</h2>
+            <p>Все о культовой игре от Rockstar Games: персонажи, секреты и обновления.</p>
+            <button id="btn-alert" class="btn">Узнать больше</button>
+        </div>
+    </section>
+
+    <!-- Блок про персонажей -->
+    <section id="characters" class="container section">
+        <h2>Главные герои</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Майкл</h3>
+                <p>Бывший грабитель банков, ушедший на покой, но вынужденный вернуться в дело.</p>
+            </div>
+            <div class="card">
+                <h3>Франклин</h3>
+                <p>Уличный карманник, стремящийся вырваться из гетто и начать серьезный бизнес.</p>
+            </div>
+            <div class="card">
+                <h3>Тревор</h3>
+                <p>Непредсказуемый и безумный летчик-психопат, готовый на любое безумие.</p>
+            </div>
+        </div>
+    </section>
+
+        <!-- НОВЫЙ БЛОК: Особенности -->
+    <section id="features" class="container section">
+        <h2>Особенности игры</h2>
+        <p class="section-subtitle">Почему Grand Theft Auto V стала легендой игровой индустрии</p>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">🏙️</div>
+                <h3>Огромный мир</h3>
+                <p>Живой и проработанный Лос-Сантос и округ Блейн, полные случайных событий, секретов и развлечений.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔄</div>
+                <h3>Три героя</h3>
+                <p>Уникальная механика мгновенного переключения между тремя персонажами со своими историями и навыками.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">💰</div>
+                <h3>Ограбления</h3>
+                <p>Масштабные многоэтапные миссии, где вам нужно лично планировать подход, выбирать команду и делить куш.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🚗</div>
+                <h3>GTA Online</h3>
+                <p>Постоянно развивающийся многопользовательский режим с бизнесом, гонками, ограблениями и тысячами игроков.</p>
+            </div>
+        </div>
+    </section>
+    
+       <!-- Блок с исправленной картой -->
+    <section id="map-section" class="container section">
+        <h2>Карта Лос-Сантоса</h2>
+        <p class="section-subtitle">Исследуйте улицы города и его окрестности прямо здесь</p>
+        
+                <div class="map-container">
+            <!-- Вставляем локальную картинку вместо вредного Google iframe -->
+            <img src="gta-map.jpg" alt="Карта Лос-Сантоса">
+        </div>
+    </section>
+
+
+ <!-- НОВЫЙ БЛОК: Чит-коды -->
+    <section id="cheats" class="bg-dark section">
+        <div class="container">
+            <h2>База Чит-кодов</h2>
+            <p>Выберите платформу, чтобы увидеть нужный код:</p>
+            <div class="cheat-buttons">
+                <button class="btn-cheat active" onclick="showCheats('pc')">PC (ПК)</button>
+                <button class="btn-cheat" onclick="showCheats('ps')">PlayStation</button>
+            </div>
+            
+            <div id="cheats-container" class="cheats-box">
+                <!-- Сюда коды будут подставляться из JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- НОВЫЙ БЛОК: Лучшие авто -->
+    <section id="cars" class="container section">
+        <h2>Топовый транспорт в игре</h2>
+        <div class="grid">
+            <div class="car-item">
+                <img src="car9.5.10.jpg" alt="Supercar">
+                <h4>Pegassi Osiris</h4>
+                <p>Тип: Суперкар | Скорость: 9.5/10</p>
+            </div>
+            <div class="car-item">
+                <img src="sportcar.jpg" alt="Sportscar">
+                <h4>Karin Sultan RS</h4>
+                <p>Тип: Спорткар | Управление: 10/10</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок требований -->
+    <section id="requirements" class="bg-dark section">
+        <div class="container">
+            <h2>Системные требования</h2>
+            <div class="grid">
+                <div>
+                    <h3>Минимум:</h3>
+                    <p>ОС: Windows 10 64 Bit</p>
+                    <p>Процессор: Intel Core 2 Quad Q6600</p>
+                    <p>Оперативная память: 4 GB</p>
+                    <p>Видеокарта: NVIDIA 9800 GT 1GB</p>
+                </div>
+                <div>
+                    <h3>Рекомендуемые:</h3>
+                    <p>ОС: Windows 10 64 Bit</p>
+                    <p>Процессор: Intel Core i5 3470</p>
+                    <p>Оперативная память: 8 GB</p>
+                    <p>Видеокарта: NVIDIA GTX 660 2GB</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Фанатский сайт GTA 5. Создано в VS Code.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
