@@ -102,3 +102,22 @@ function loadComments() {
 function escapeHTML(str) {
     return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
+
+// Код для работы мобильного меню-бургера
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const navMenu = document.getElementById('nav-menu');
+const navLinks = document.querySelectorAll('#nav-menu a');
+
+// Открываем/закрываем меню при клике на бургер
+mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Автоматически закрываем меню при клике на любой пункт (чтобы не мешало скроллу)
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenuBtn.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});

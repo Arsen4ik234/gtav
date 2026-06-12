@@ -8,17 +8,25 @@
 </head>
 <body>
 
-    <!-- Шапка сайта -->
+       <!-- Шапка сайта -->
     <header>
         <div class="container">
             <h1 class="logo">GTA <span>V</span></h1>
-            <nav>
+            
+            <!-- Кнопка гамбургера для мобильных -->
+            <button class="menu-toggle" id="mobile-menu-btn" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav id="nav-menu">
                 <ul>
                     <li><a href="#characters">Персонажи</a></li>
                     <li><a href="#features">Особенности</a></li>
                     <li><a href="#map-section">Карта</a></li>
                     <li><a href="#cheats">Чит-коды</a></li>
-                    <li><a href="#requirements">Системные требования</a></li>
+                    <li><a href="#requirements">Требования</a></li>
                 </ul>
             </nav>
         </div>

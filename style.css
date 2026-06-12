@@ -315,33 +315,81 @@ nav ul li a:hover {
     }
 }
 
-/* 📱 СТИЛИ СТРОГО ДЛЯ ТЕЛЕФОНОВ (Экран меньше 600px) */
-@media (max-width: 600px) {
-    .section {
-        padding: 40px 0; /* Уменьшаем вертикальные отступы секций */
+/* 📱 АДАПТИВНЫЕ СТИЛИ ДЛЯ ПЛАНШЕТОВ И СМАРТФОНОВ */
+@media (max-width: 992px) {
+    header .container {
+        position: relative;
+        justify-content: space-between;
     }
 
-    .hero h2 {
-        font-size: 26px; /* Еще немного уменьшаем заголовок на баннере */
+    /* Включаем иконку бургера */
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 110;
+        padding: 0;
     }
 
-    /* Все карточки, особенности и авто встают строго в один ряд (друг под друга) */
-    .card, .feature-item, .car-item {
-        flex: 1 1 100%;
+    .menu-toggle span {
+        width: 100%;
+        height: 3px;
+        background-color: #fff;
+        transition: all 0.3s ease;
     }
 
-    /* Карта и Видео: убираем фиксированную высоту, чтобы они не сжимались */
-    .map-container img {
-        height: 300px; /* Оптимальная высота для экрана телефона */
+    /* Анимация превращения бургера в крестик при активации */
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+        background-color: #76b900;
+    }
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+        background-color: #76b900;
     }
 
-    .cheats-box {
-        padding: 15px;
+    /* Скрытое выпадающее меню */
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        border-bottom: 2px solid #76b900;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+        z-index: 105;
     }
 
-    .cheat-item {
-        flex-direction: column; /* На телефонах имя чита и сам код будут друг под друга */
-        gap: 5px;
+    /* Класс, который будет добавляться через JavaScript при клике */
+    nav.active {
+        max-height: 400px; /* Открывает меню плавно вниз */
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 20px 0;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 15px 0;
+    }
+
+    nav ul li a {
+        font-size: 18px;
+        display: block;
+        width: 100%;
+        text-align: center;
     }
 }
 
