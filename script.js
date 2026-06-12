@@ -6,48 +6,95 @@ alertButton.addEventListener('click', () => {
     alert('Добро пожаловать в Лос-Сантос! Сайт находится в разработке, скоро здесь будет еще больше контента.');
 });
 
-// База данных чит-кодов
-const cheatsData = {
-    pc: [
-        { name: "Бессмертие (5 мин)", code: "PAINKILLER" },
-        { name: "Максимум здоровья и брони", code: "TURTLE" },
-        { name: "Быстрый бег", code: "CATCHME" },
-        { name: "Получить суперкар Spawn Rapid GT", code: "RAPIDGT" }
-    ],
-    ps: [
-        { name: "Бессмертие (5 мин)", code: "RIGHT, X, RIGHT, LEFT, RIGHT, R1..." },
-        { name: "Максимум здоровья и брони", code: "CIRCLE, L1, TRIANGLE, R2, X..." },
-        { name: "Быстрый бег", code: "TRIANGLE, LEFT, RIGHT, RIGHT, L2..." },
-        { name: "Получить суперкар Rapid GT", code: "R2, L1, CIRCLE, RIGHT, L1, R1..." }
-    ]
-};
+// Расширенная база данных чит-кодов с категориями
+const cheatsDatabase = [
+    // Категория: Игрок / Бессмертие
+    { category: "player", name: "Бессмертие (на 5 минут)", pc: "PAINKILLER", ps: "RIGHT, X, RIGHT, LEFT, RIGHT, R1, RIGHT, LEFT, X, TRIANGLE" },
+    { category: "player", name: "Максимум здоровья и брони", pc: "TURTLE", ps: "CIRCLE, L1, TRIANGLE, R2, X, SQUARE, CIRCLE, RIGHT, SQUARE, L1, L1, L1" },
+    { category: "player", name: "Повысить уровень розыска (+1 звезда)", pc: "FUGITIVE", ps: "R1, R1, CIRCLE, R2, LEFT, RIGHT, LEFT, RIGHT, LEFT, RIGHT" },
+    { category: "player", name: "Понизить уровень розыска (-1 звезда)", pc: "LAWYERUP", ps: "R1, R1, CIRCLE, R2, RIGHT, LEFT, RIGHT, LEFT, RIGHT, LEFT" },
+    
+    // Категория: Оружие
+    { category: "weapons", name: "Получить всё оружие и патроны", pc: "TOOLUP", ps: "TRIANGLE, R2, LEFT, L1, X, RIGHT, TRIANGLE, DOWN, SQUARE, L1, L1, L1" },
+    { category: "weapons", name: "Взрывные выстрелы", pc: "HIGHEX", ps: "RIGHT, SQUARE, X, LEFT, R1, R2, LEFT, RIGHT, RIGHT, L1, L1, L1" },
+    { category: "weapons", name: "Зажигательные патроны", pc: "INCEDIARY", ps: "L1, R1, SQUARE, R1, LEFT, R2, R1, LEFT, SQUARE, RIGHT, L1, L1" },
 
-// Функция для отображения кодов
-function showCheats(platform) {
+    // Категория: Машины / Транспорт
+    { category: "cars", name: "Суперкар Pegassi Rapid GT", pc: "RAPIDGT", ps: "R2, L1, CIRCLE, RIGHT, L1, R1, RIGHT, LEFT, CIRCLE, R2" },
+    { category: "cars", name: "Спорткар Dewbauchee Comet", pc: "COMET", ps: "R1, CIRCLE, R2, RIGHT, L1, L2, X, X, SQUARE, R1" },
+    { category: "cars", name: "Вертолет Buzzard (с ракетами)", pc: "BUZZOFF", ps: "CIRCLE, CIRCLE, L1, CIRCLE, CIRCLE, CIRCLE, L1, L2, R1, TRIANGLE, CIRCLE, TRIANGLE" },
+    { category: "cars", name: "Мотоцикл PCJ-600", pc: "ROCKET", ps: "R1, RIGHT, LEFT, RIGHT, R2, LEFT, RIGHT, SQUARE, RIGHT, L2, L1, L1" }
+];
+
+// Текущие настройки фильтра
+let currentPlatform = 'pc';
+let currentCategory = 'all';
+
+// Функция для вывода кодов на экран
+function renderCheats() {
     const container = document.getElementById('cheats-container');
-    const buttons = document.querySelectorAll('.btn-cheat');
-    
-    // Переключаем активную кнопку
-    buttons.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-    
-    // Очищаем контейнер и заполняем новыми кодами
-    container.innerHTML = '';
-    cheatsData[platform].forEach(item => {
+    container.innerHTML = ''; // Очищаем контейнер перед выводом
+
+    // Фильтруем массив по выбранной категории
+    const filteredCheats = cheatsDatabase.filter(cheat => {
+        if (currentCategory === 'all') return true;
+        return cheat.category === currentCategory;
+    });
+
+    // Если ничего не найдено
+    if (filteredCheats.length === 0) {
+        container.innerHTML = '<p style="text-align:center; color:#666;">Коды в этой категории пока не добавлены.</p>';
+        return;
+    }
+
+    // Генерируем HTML для каждого чита
+    filteredCheats.forEach(cheat => {
+        const codeValue = currentPlatform === 'pc' ? cheat.pc : cheat.ps;
         container.innerHTML += `
             <div class="cheat-item">
-                <label>${item.name}</label>
-                <span>${item.code}</span>
+                <label>${cheat.name}</label>
+                <span>${codeValue}</span>
             </div>
         `;
     });
 }
 
-// Загружаем коды для PC по умолчанию при старте страницы
-window.onload = function() {
-    showCheats('pc');
-};
+// Функция смены категории
+function changeCategory(categoryName) {
+    currentCategory = categoryName;
+    
+    // Переключаем активный класс у кнопок категорий
+    const catButtons = document.querySelectorAll('.btn-category');
+    catButtons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    renderCheats();
+}
 
+// Настройка переключателей платформы (ПК / PS) при загрузке страницы
+document.addEventListener('DOMContentLoaded', () => {
+    const btnPc = document.getElementById('btn-pc');
+    const btnPs = document.getElementById('btn-ps');
+
+    if(btnPc && btnPs) {
+        btnPc.addEventListener('click', () => {
+            currentPlatform = 'pc';
+            btnPs.classList.remove('active');
+            btnPc.classList.add('active');
+            renderCheats();
+        });
+
+        btnPs.addEventListener('click', () => {
+            currentPlatform = 'ps';
+            btnPc.classList.remove('active');
+            btnPs.classList.add('active');
+            renderCheats();
+        });
+    }
+
+    // Первый запуск рендеринга кодов
+    renderCheats();
+});
 
 // Находим элементы формы
 const commentForm = document.getElementById('comment-form');

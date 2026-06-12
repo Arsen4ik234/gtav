@@ -90,38 +90,90 @@ nav ul li a:hover { color: #76b900; }
 .card h3 { color: #76b900; margin: 15px; }
 .card p { margin: 15px; font-size: 14px; color: #ccc; text-align: left; }
 
-/* Стили для блока читов */
-.cheat-buttons { margin-bottom: 20px; }
-.btn-cheat {
-    background-color: #333;
+/* Стили для обновленного блока читов */
+.cheat-selectors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.platform-buttons, .category-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-platform, .btn-category {
+    background-color: #222;
     color: #fff;
-    border: 2px solid #555;
-    padding: 10px 20px;
-    margin: 0 5px;
+    border: 2px solid #444;
+    padding: 8px 16px;
     cursor: pointer;
     font-weight: bold;
     border-radius: 4px;
+    font-size: 14px;
+    transition: all 0.2s ease;
 }
-.btn-cheat.active {
+
+.btn-platform:hover, .btn-category:hover {
+    border-color: #76b900;
+}
+
+/* Активные состояния кнопок */
+.btn-platform.active {
+    background-color: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+.btn-category.active {
     background-color: #76b900;
     color: #000;
     border-color: #76b900;
 }
+
 .cheats-box {
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto;
     background: #1a1a1a;
     padding: 20px;
     border-radius: 8px;
     text-align: left;
+    border: 1px solid #333;
+    min-height: 150px;
 }
+
 .cheat-item {
     display: flex;
     justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #333;
+    padding: 12px 0;
+    border-bottom: 1px solid #2a2a2a;
+    align-items: center;
 }
-.cheat-item span { color: #76b900; font-weight: bold; }
+
+.cheat-item:last-child {
+    border-bottom: none;
+}
+
+.cheat-item label {
+    font-weight: 600;
+    color: #eee;
+}
+
+.cheat-item span {
+    color: #76b900;
+    font-weight: bold;
+    background: #222;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid #333;
+    font-family: monospace;
+    font-size: 14px;
+    text-align: right;
+}
 
 /* Автомобили */
 .car-item { flex: 1; min-width: 300px; background: #222; padding: 15px; border-radius: 8px; }

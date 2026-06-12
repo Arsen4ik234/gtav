@@ -103,18 +103,30 @@
     </section>
 
 
- <!-- НОВЫЙ БЛОК: Чит-коды -->
+  <!-- БЛОК: Чит-коды по категориям -->
     <section id="cheats" class="bg-dark section">
         <div class="container">
             <h2>База Чит-кодов</h2>
-            <p>Выберите платформу, чтобы увидеть нужный код:</p>
-            <div class="cheat-buttons">
-                <button class="btn-cheat active" onclick="showCheats('pc')">PC (ПК)</button>
-                <button class="btn-cheat" onclick="showCheats('ps')">PlayStation</button>
+            <p class="section-subtitle">Выберите платформу и категорию, чтобы быстро найти нужный код</p>
+            
+            <!-- Переключатель платформы -->
+            <div class="cheat-selectors">
+                <div class="platform-buttons">
+                    <button class="btn-platform active" id="btn-pc">PC (ПК)</button>
+                    <button class="btn-platform" id="btn-ps">PlayStation</button>
+                </div>
+                
+                <!-- Переключатель категорий -->
+                <div class="category-buttons">
+                    <button class="btn-category active" onclick="changeCategory('all')">Все</button>
+                    <button class="btn-category" onclick="changeCategory('player')">Бессмертие / Игрок</button>
+                    <button class="btn-category" onclick="changeCategory('weapons')">Оружие</button>
+                    <button class="btn-category" onclick="changeCategory('cars')">Машины / Транспорт</button>
+                </div>
             </div>
             
             <div id="cheats-container" class="cheats-box">
-                <!-- Сюда коды будут подставляться из JavaScript -->
+                <!-- Коды будут подставляться из JavaScript автоматически -->
             </div>
         </div>
     </section>
