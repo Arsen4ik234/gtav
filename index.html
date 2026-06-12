@@ -131,43 +131,20 @@
         </div>
     </section>
 
-    <!-- НОВЫЙ БЛОК: Лучшие авто -->
+   <!-- БЛОК: Автопарк с сортировкой по редкости -->
     <section id="cars" class="container section">
         <h2>Топовый транспорт в игре</h2>
-        <div class="grid">
-            <div class="car-item">
-                <img src="car9.5.10.jpg" alt="Supercar">
-                <h4>Pegassi Osiris</h4>
-                <p>Тип: Суперкар | Скорость: 9.5/10</p>
-            </div>
-            <div class="car-item">
-                <img src="sportcar.jpg" alt="Sportscar">
-                <h4>Karin Sultan RS</h4>
-                <p>Тип: Спорткар | Управление: 10/10</p>
-            </div>
+        <p class="section-subtitle">Сортировка машин Лос-Сантоса от повседневных до ультра-редких эксклюзивов</p>
+        
+        <!-- Кнопки сортировки -->
+        <div class="cars-filter-buttons">
+            <button class="btn-car-filter active" onclick="filterCars('all')">Все авто</button>
+            <button class="btn-car-filter" onclick="filterCars('common')">Частые (На улицах)</button>
+            <button class="btn-car-filter" onclick="filterCars('rare')">Редкие / Секретные</button>
         </div>
-    </section>
 
-    <!-- Блок требований -->
-    <section id="requirements" class="bg-dark section">
-        <div class="container">
-            <h2>Системные требования</h2>
-            <div class="grid">
-                <div>
-                    <h3>Минимум:</h3>
-                    <p>ОС: Windows 10 64 Bit</p>
-                    <p>Процессор: Intel Core 2 Quad Q6600</p>
-                    <p>Оперативная память: 4 GB</p>
-                    <p>Видеокарта: NVIDIA 9800 GT 1GB</p>
-                </div>
-                <div>
-                    <h3>Рекомендуемые:</h3>
-                    <p>ОС: Windows 10 64 Bit</p>
-                    <p>Процессор: Intel Core i5 3470</p>
-                    <p>Оперативная память: 8 GB</p>
-                    <p>Видеокарта: NVIDIA GTX 660 2GB</p>
-                </div>
-            </div>
+        <div id="cars-gallery" class="grid">
+            <!-- Карточки автомобилей будут генерироваться через JavaScript -->
         </div>
     </section>
 

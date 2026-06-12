@@ -168,3 +168,91 @@ navLinks.forEach(link => {
         navMenu.classList.remove('active');
     });
 });
+
+// База данных машин с указанием редкости
+const carsDatabase = [
+   {
+        id: "karin",
+        name: "Karin Sultan RS", // Изменили название на RS-версию
+        type: "Суперкар / Спорткар", // Изменили тип
+        speed: "9.2/10", // Увеличили скорость для раллийной версии
+        rarity: "rare", // Перевели в категорию редких, так как RS-версию сложнее найти
+        rarityText: "Редкая (Тюнинг в Султан RS)",
+        image: "sportcar.jpg" // Имя картинки оставляем прежним (или вашим)
+    },
+    {
+        id: "vapid",
+        name: "Vapid Dominator",
+        type: "Маслкар",
+        speed: "8.0/10",
+        rarity: "common",
+        rarityText: "Частая (В центре Лос-Сантоса)",
+        image: "vapid.jpg"
+    },
+    {
+        id: "osiris",
+        name: "Pegassi Osiris",
+        type: "Суперкар",
+        speed: "9.5/10",
+        rarity: "rare",
+        rarityText: "Редкая (Покупка в интернете)",
+        image: "car9.5.10.jpg"
+    },
+    {
+        id: "adder",
+        name: "Truffade Adder",
+        type: "Суперкар",
+        speed: "9.8/10",
+        rarity: "rare",
+        rarityText: "Секретная (Стоит возле бутика)",
+        image: "adder.jpg"
+    }
+];
+
+// Функция рендеринга галереи машин
+function renderCars(filterType = 'all') {
+    const gallery = document.getElementById('cars-gallery');
+    if (!gallery) return;
+    
+    gallery.innerHTML = ''; // Очищаем галерею
+
+    // Фильтруем машины по типу редкости
+    const filteredCars = carsDatabase.filter(car => {
+        if (filterType === 'all') return true;
+        return car.rarity === filterType;
+    });
+
+    // Создаем карточки
+    filteredCars.forEach(car => {
+        gallery.innerHTML += `
+            <div class="car-item">
+                <img src="${car.image}" alt="${car.name}">
+                <div class="car-info">
+                    <h4>${car.name}</h4>
+                    <p><strong>Тип:</strong> ${car.type}</p>
+                    <p><strong>Скорость:</strong> ${car.speed}</p>
+                    <div class="rarity-badge ${car.rarity}">${car.rarityText}</div>
+                </div>
+            </div>
+        `;
+    });
+}
+
+// Управление кнопками фильтра машин
+function filterCars(rarityType) {
+    // Меняем активную кнопку
+    const buttons = document.querySelectorAll('.btn-car-filter');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    
+    // Подсвечиваем нажатую кнопку
+    if (event && event.target) {
+        event.target.classList.add('active');
+    }
+
+    renderCars(rarityType);
+}
+
+// Запускаем автоматическое отображение машин при загрузке страницы
+document.addEventListener('DOMContentLoaded', () => {
+    renderCars('all');
+});
