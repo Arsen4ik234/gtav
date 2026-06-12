@@ -47,3 +47,58 @@ function showCheats(platform) {
 window.onload = function() {
     showCheats('pc');
 };
+
+
+// Находим элементы формы
+const commentForm = document.getElementById('comment-form');
+const commentsList = document.getElementById('comments-list');
+
+// Загружаем отзывы из памяти при открытии сайта
+document.addEventListener('DOMContentLoaded', loadComments);
+
+// Обработка отправки формы
+commentForm.addEventListener('submit', function(e) {
+    e.preventDefault(); // Отменяем перезагрузку страницы
+
+    const nameInput = document.getElementById('comment-name');
+    const textInput = document.getElementById('comment-text');
+
+    const newComment = {
+        name: nameInput.value,
+        text: textInput.value
+    };
+
+    // Сохраняем в массив
+    let comments = JSON.parse(localStorage.getItem('gta_comments')) || [];
+    comments.push(newComment);
+    localStorage.setItem('gta_comments', JSON.stringify(comments));
+
+    // Выводим на экран
+    addCommentToDOM(newComment);
+
+    // Очищаем форму
+    nameInput.value = '';
+    textInput.value = '';
+});
+
+// Функция добавления отзыва на страницу
+function addCommentToDOM(comment) {
+    const div = document.createElement('div');
+    div.classList.add('comment-item');
+    div.innerHTML = `
+        <h4>${escapeHTML(comment.name)}</h4>
+        <p>${escapeHTML(comment.text)}</p>
+    `;
+    commentsList.appendChild(div);
+}
+
+// Загрузка всех отзывов
+function loadComments() {
+    let comments = JSON.parse(localStorage.getItem('gta_comments')) || [];
+    comments.forEach(addCommentToDOM);
+}
+
+// Защита от спама кодом (XSS уязвимости)
+function escapeHTML(str) {
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}

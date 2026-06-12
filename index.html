@@ -148,6 +148,26 @@
         </div>
     </section>
 
+     <!-- НОВЫЙ БЛОК: Отзывы и комментарии -->
+    <section id="comments-section" class="container section">
+        <h2>Отзывы о GTA 5 и сайте</h2>
+        <p class="section-subtitle">Оставьте свое мнение об игре или поделитесь фишками</p>
+        
+        <div class="comments-container">
+            <!-- Форма отправки -->
+            <form id="comment-form">
+                <input type="text" id="comment-name" placeholder="Ваш никнейм в игре" required>
+                <textarea id="comment-text" rows="4" placeholder="Ваш комментарий или отзыв..." required></textarea>
+                <button type="submit" class="btn">Отправить отзыв</button>
+            </form>
+
+            <!-- Список комментариев -->
+            <div id="comments-list">
+                <!-- Сюда отзывы будут добавляться автоматически -->
+            </div>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2026 Фанатский сайт GTA 5. Создано в VS Code.</p>
     </footer>

@@ -344,3 +344,59 @@ nav ul li a:hover {
         gap: 5px;
     }
 }
+
+/* Стили для блока комментариев */
+.comments-container {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+    background: #222;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+#comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+#comment-form input, #comment-form textarea {
+    background-color: #1a1a1a;
+    border: 2px solid #333;
+    color: #fff;
+    padding: 12px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+#comment-form input:focus, #comment-form textarea:focus {
+    outline: none;
+    border-color: #76b900; /* Зеленый фокус */
+}
+
+/* Стили для вывода отзывов */
+.comment-item {
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border-left: 4px solid #76b900;
+}
+
+.comment-item h4 {
+    margin: 0 0 5px 0;
+    color: #76b900;
+    font-size: 16px;
+}
+
+.comment-item p {
+    margin: 0;
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.5;
+}
