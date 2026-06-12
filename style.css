@@ -239,6 +239,11 @@ header .container {
     text-shadow: 0 0 10px rgba(118, 185, 0, 0.5);
 }
 
+/* Кнопка меню на больших экранах ПК должна быть строго скрыта */
+.menu-toggle {
+    display: none;
+}
+
 nav ul {
     list-style: none;
     margin: 0;
@@ -322,9 +327,9 @@ nav ul li a:hover {
         justify-content: space-between;
     }
 
-    /* Включаем иконку бургера */
+   /* Включаем иконку бургера на смартфонах */
     .menu-toggle {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         justify-content: space-between;
         width: 30px;
